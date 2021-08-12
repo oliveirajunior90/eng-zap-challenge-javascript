@@ -8,14 +8,21 @@ const RouteComponent = ({ path, component }) => (
   </Route>
 );
 
+const SwitchRoutes = () => {
+  return (
+    <Switch>
+      {/* <RouteComponent path="/" exact={true} component={Home} /> */}
+      <RouteComponent path="/vivareal" component={Products} />
+      <RouteComponent path="/zap" component={Products} />
+    </Switch>
+  );
+};
+
 const App = () => {
   return (
     <Router>
       <Theme>
-        <Switch>
-          {/* <RouteComponent path="/" exact={true} component={Home} /> */}
-          <RouteComponent path="/home/:brand" component={Products} />
-        </Switch>
+        <SwitchRoutes />
       </Theme>
     </Router>
   );
