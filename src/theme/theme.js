@@ -7,7 +7,7 @@ const theme = {
   },
   zap: {
     color: {
-      primary: 'blue',
+      primary: '#007aa5',
       secundary: '#EEE',
     },
   },
