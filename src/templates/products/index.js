@@ -1,6 +1,6 @@
 import * as S from './styles';
 
-const Home = () => {
+const Products = () => {
   return (
     <div className="App">
       <header className="App-header">
@@ -10,4 +10,4 @@ const Home = () => {
   );
 };
 
-export default Home;
+export default Products;
