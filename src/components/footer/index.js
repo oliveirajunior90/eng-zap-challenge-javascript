@@ -1,11 +1,14 @@
 import React from 'react';
 import styled from 'styled-components';
 import LogoFooter from '../static/zap-footer.svg';
+import { Container } from '@material-ui/core';
 
 const Footer = () => {
   return (
     <Wrapper>
-      <Image src={LogoFooter} alt="logo-footer" />
+      <Container fixed>
+        <Image src={LogoFooter} alt="logo-footer" />
+      </Container>
     </Wrapper>
   );
 };
