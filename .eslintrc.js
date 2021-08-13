@@ -20,6 +20,7 @@ module.exports = {
     'react/react-in-jsx-scope': 'off',
     'no-console': 1,
     'prettier/prettier': 'error',
+    'react/display-name': 'off',
   },
   overrides: [
     {

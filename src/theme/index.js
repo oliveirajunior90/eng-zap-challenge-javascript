@@ -1,7 +1,7 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
 import { ThemeProvider } from 'styled-components';
-import theme from './theme';
+import themeConfig from './config';
 import GlobalStyles from './global-styles';
 
 import Header from '../components/header';
@@ -13,7 +13,7 @@ const Theme = (props) => {
   const brand = param === 'zap' ? 'zap' : 'viva';
 
   return (
-    <ThemeProvider theme={theme[brand]}>
+    <ThemeProvider theme={themeConfig[brand]}>
       <GlobalStyles />
       <Header />
       {children}

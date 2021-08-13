@@ -1,7 +1,8 @@
 import * as S from './styles';
 import { Container } from '@material-ui/core';
+import withProducts from '../../services/products';
 
-const Products = () => {
+export const Products = () => {
   return (
     <Container fixed>
       <div className="App">
@@ -13,4 +14,4 @@ const Products = () => {
   );
 };
 
-export default Products;
+export default withProducts(Products);
