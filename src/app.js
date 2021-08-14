@@ -1,19 +1,14 @@
 import Products from './templates/products';
 import { Switch, Route, BrowserRouter as Router } from 'react-router-dom';
 import Theme from './theme';
-
-const RouteComponent = ({ path, component }) => (
-  <Route exact={true} path={path}>
-    {component}
-  </Route>
-);
+import Context from './utils/context';
 
 const SwitchRoutes = () => {
   return (
     <Switch>
-      {/* <RouteComponent path="/" exact={true} component={Home} /> */}
-      <RouteComponent path="/vivareal" component={Products} />
-      <RouteComponent path="/zap" component={Products} />
+      <Route exact path="/vivareal/:businessType" render={() => <Products />} />
+      <Route exact path="/zap/:businessType" render={() => <Products />} />
+      <Route exact path="/*" render={() => <div>oi</div>} />
     </Switch>
   );
 };
@@ -21,9 +16,11 @@ const SwitchRoutes = () => {
 const App = () => {
   return (
     <Router>
-      <Theme>
-        <SwitchRoutes />
-      </Theme>
+      <Context>
+        <Theme>
+          <SwitchRoutes />
+        </Theme>
+      </Context>
     </Router>
   );
 };

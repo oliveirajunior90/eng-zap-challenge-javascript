@@ -8,8 +8,7 @@ import { byBrand, isValid, canBeSold, canBeRented } from './filters';
 // No caso de aluguel, o valor máximo deve ser de R$ 4.000,00.
 // No caso de venda, o valor máximo deve ser de R$ 700.000,00.
 
-const getData = (params) => {
-  const { brand, businessType } = params;
+const getData = ({ brand, businessType }) => {
   const dataApi = source.filter(isValid).filter(byBrand(brand));
 
   const setData = {
@@ -19,7 +18,17 @@ const getData = (params) => {
 
   const data = setData[businessType] || dataApi;
 
-  return formatData(data);
+  // const data2 = data.map((res) => {
+  //   return {
+  //     address: res.address.city,
+  //     lat: res.address.geoLocation.location.lat,
+  //     lon: res.address.geoLocation.location.lon,
+  //     preco: res.pricingInfos.price,
+  //     info: res.pricingInfos.businessType,
+  //   };
+  // });
+
+  return data;
 };
 
 export default getData;

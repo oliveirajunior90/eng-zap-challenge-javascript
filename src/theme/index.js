@@ -1,16 +1,16 @@
-import React from 'react';
-import { withRouter } from 'react-router-dom';
+import React, { useContext } from 'react';
 import { ThemeProvider } from 'styled-components';
 import themeConfig from './config';
 import GlobalStyles from './global-styles';
+
+import { ApiContext } from '../utils/context';
 
 import Header from '../components/header';
 import Footer from '../components/footer';
 
 const Theme = (props) => {
-  const { children, location } = props;
-  const param = location.pathname.split('/')[1];
-  const brand = param === 'zap' ? 'zap' : 'viva';
+  const { children } = props;
+  const { brand } = useContext(ApiContext);
 
   return (
     <ThemeProvider theme={themeConfig[brand]}>
@@ -22,4 +22,4 @@ const Theme = (props) => {
   );
 };
 
-export default withRouter(Theme);
+export default Theme;

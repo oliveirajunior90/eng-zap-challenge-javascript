@@ -2,7 +2,8 @@ import * as S from './styles';
 import { Container } from '@material-ui/core';
 import withProducts from '../../services/products';
 
-export const Products = () => {
+export const Products = ({ data }) => {
+  console.log(data);
   return (
     <Container fixed>
       <div className="App">
