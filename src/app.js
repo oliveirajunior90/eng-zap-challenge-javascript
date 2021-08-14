@@ -6,8 +6,16 @@ import Context from './utils/context';
 const SwitchRoutes = () => {
   return (
     <Switch>
-      <Route exact path="/vivareal/:businessType" render={() => <Products />} />
-      <Route exact path="/zap/:businessType" render={() => <Products />} />
+      <Route
+        exact
+        path="/vivareal/:businessType/:page"
+        render={() => <Products />}
+      />
+      <Route
+        exact
+        path="/zap/:businessType/:page"
+        render={() => <Products />}
+      />
       <Route exact path="/*" render={() => <div>oi</div>} />
     </Switch>
   );

@@ -4,8 +4,8 @@ import { compose } from 'redux';
 import { ApiContext } from '../../utils/context';
 
 const withProducts = (Component) => () => {
-  const { brand, businessType } = useContext(ApiContext);
-  const data = getData({ brand, businessType });
+  const { brand, businessType, page } = useContext(ApiContext);
+  const data = getData({ brand, businessType, page });
 
   return <Component data={data} />;
 };

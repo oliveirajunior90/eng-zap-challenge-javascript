@@ -1,14 +1,11 @@
 import source from './source/api.json';
 import { byBrand, isValid, canBeSold, canBeRented } from './filters';
 
-// Para o imóvel ser listado no ZAP:
-// No caso de aluguel, o valor mínimo deve ser de R$ 3.500,00.
-// No caso de venda, o valor mínimo deve ser de R$ 600.000,00. \
-// Para o imóvel ser listado no Viva Real:
-// No caso de aluguel, o valor máximo deve ser de R$ 4.000,00.
-// No caso de venda, o valor máximo deve ser de R$ 700.000,00.
+const paginate = (array, limit, page) => {
+  return array.slice((page - 1) * limit, page * limit);
+};
 
-const getData = ({ brand, businessType }) => {
+const getData = ({ brand, businessType, page = 1 }) => {
   const dataApi = source.filter(isValid).filter(byBrand(brand));
 
   const setData = {
@@ -18,6 +15,7 @@ const getData = ({ brand, businessType }) => {
 
   const data = setData[businessType] || dataApi;
 
+  return paginate(data, 20, page);
   // const data2 = data.map((res) => {
   //   return {
   //     address: res.address.city,
@@ -27,8 +25,6 @@ const getData = ({ brand, businessType }) => {
   //     info: res.pricingInfos.businessType,
   //   };
   // });
-
-  return data;
 };
 
 export default getData;
