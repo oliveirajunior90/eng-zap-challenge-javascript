@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import getData from '../../api';
+import { getData } from '../../api';
 
 import { ApiContext } from '../../utils/context';
 
@@ -27,6 +27,7 @@ const withProducts = (Component) => (props) => {
       pageTotal={pageTotal}
       businessType={businessType}
       onChangePage={onChangePage}
+      brand={brand}
     />
   );
 };

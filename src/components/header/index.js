@@ -3,7 +3,7 @@ import { useStyles } from './style';
 import { Link } from 'react-router-dom';
 import { Container } from '@material-ui/core';
 
-import LogoFooter from '../../static/zap-footer.svg';
+import LogoFooter from '../../static/vivareal.png';
 import ZapLogo from '../../static/zap.svg';
 
 const logo = {

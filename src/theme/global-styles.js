@@ -3,6 +3,9 @@ import { createStyles, makeStyles } from '@material-ui/core';
 const useStyles = makeStyles(() =>
   createStyles({
     '@global': {
+      body: {
+        background: '#f1f1f1',
+      },
       a: {
         textDecoration: 'none',
       },

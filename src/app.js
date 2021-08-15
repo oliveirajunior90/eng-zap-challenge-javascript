@@ -1,4 +1,5 @@
 import Products from './templates/products';
+import Single from './templates/single';
 import { Switch, Route, BrowserRouter as Router } from 'react-router-dom';
 import Context from './utils/context';
 import Theme from './theme';
@@ -26,7 +27,17 @@ const SwitchRoutes = () => {
         path="/zap/aluguel"
         render={(props) => <Products {...props} />}
       />
-      <Route exact path="/*" render={() => <div>oi</div>} />
+      <Route
+        exact
+        path="/zap/imovel/:id"
+        render={(props) => <Single {...props} />}
+      />
+      <Route
+        exact
+        path="/vivareal/imovel/:id"
+        render={(props) => <Single {...props} />}
+      />
+      <Route exact path="/*" render={() => <div>Página de Erro</div>} />
     </Switch>
   );
 };

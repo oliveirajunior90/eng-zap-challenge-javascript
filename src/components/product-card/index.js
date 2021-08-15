@@ -1,10 +1,7 @@
 import React from 'react';
 import Carousel from 'react-slick';
 import { useStyles } from './style';
-import { Grid, Card } from '@material-ui/core';
-import { getPrice } from '../../utils/currency';
-import { Link } from 'react-router-dom';
-
+import { Card } from '@material-ui/core';
 import { SamplePrevArrow, SampleNextArrow } from '../arrows';
 
 const slide = {
@@ -21,7 +18,7 @@ const CustomCarousel = ({ gallery }) => {
   return (
     <Carousel {...slide}>
       {gallery.map((item, i) => (
-        <div key={`a-${i}`} className={classes.imageWrapper}>
+        <div key={`a-${i}`}>
           <img className={classes.image} key={i} src={item} alt="carousel" />
         </div>
       ))}
@@ -33,21 +30,17 @@ const Details = ({ data, classes }) => (
   <div className={classes.wrapperDetails}>
     <h3 className={classes.neighborhood}>{data.neighborhood}</h3>
     <span className={classes.city}>{data.city}</span>
-    <span className={classes.price}>{getPrice(data.price)}</span>
+    <span className={classes.price}>{data.price}</span>
   </div>
 );
 
 const ProductCard = ({ data }) => {
   const classes = useStyles();
   return (
-    <Grid item xs={12} sm={6} md={4}>
-      <Link underline="none" to="/">
-        <Card>
-          <CustomCarousel gallery={data.gallery} />
-          <Details data={data} classes={classes} />
-        </Card>
-      </Link>
-    </Grid>
+    <Card>
+      <CustomCarousel gallery={data.gallery} />
+      <Details data={data} classes={classes} />
+    </Card>
   );
 };
 

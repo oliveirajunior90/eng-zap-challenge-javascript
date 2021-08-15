@@ -1,6 +1,6 @@
 import { makeStyles } from '@material-ui/core/styles';
 
-const styles = {
+export const useStyles = makeStyles((theme) => ({
   image: {
     width: '110px',
     margin: '25px 0 15px',
@@ -27,6 +27,9 @@ const styles = {
     display: 'flex',
     listStyleType: 'none',
     alignItems: 'center',
+    [theme.breakpoints.down('sm')]: {
+      display: 'none',
+    },
   },
 
   link: {
@@ -40,8 +43,4 @@ const styles = {
       borderLeft: 0,
     },
   },
-
-  menuItem: {},
-};
-
-export const useStyles = makeStyles(() => styles);
+}));

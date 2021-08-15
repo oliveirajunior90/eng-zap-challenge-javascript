@@ -1,9 +1,7 @@
-import { createTheme } from '@material-ui/core/styles';
-
 const zap = {
   palette: {
     primary: {
-      main: '#dedede',
+      main: '#f85901',
     },
     secondary: {
       main: '#ffa500',
@@ -14,7 +12,7 @@ const zap = {
 const viva = {
   palette: {
     primary: {
-      main: '#dddd',
+      main: '#2a99d1',
     },
     secondary: {
       main: '#ffa500',
@@ -22,6 +20,4 @@ const viva = {
   },
 };
 
-const theme = { zap, viva };
-
-export default createTheme(theme);
+export const config = { viva, zap };

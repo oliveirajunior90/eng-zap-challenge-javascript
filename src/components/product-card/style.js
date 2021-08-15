@@ -1,6 +1,6 @@
 import { makeStyles } from '@material-ui/core/styles';
 
-const styles = {
+export const useStyles = makeStyles((theme) => ({
   image: {
     height: '230px',
   },
@@ -13,7 +13,7 @@ const styles = {
   city: {
     fontWeight: 700,
     fontSize: '10px',
-    color: '#f85901',
+    color: theme.palette.primary.main,
     marginBottom: '5px',
   },
 
@@ -32,6 +32,4 @@ const styles = {
     padding: '10px 15px 10px',
     flexDirection: 'column',
   },
-};
-
-export const useStyles = makeStyles(() => styles);
+}));

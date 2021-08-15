@@ -1,19 +1,24 @@
 import { makeStyles } from '@material-ui/core/styles';
 
-const styles = {
+export const useStyles = makeStyles((theme) => ({
   text: {
     textAlign: 'center',
     fontSize: '50px',
     color: 'white',
     fontWeight: 200,
+    [theme.breakpoints.down('sm')]: {
+      lineHeight: '20px',
+    },
   },
 
   wrapper: {
     padding: '15px 0',
-    background: '#f85901',
+    background: theme.palette.primary.main,
     marginBottom: '50px',
     opacity: '0.8',
+    [theme.breakpoints.down('sm')]: {
+      marginBottom: '0px',
+      padding: '5px 0',
+    },
   },
-};
-
-export const useStyles = makeStyles(() => styles);
+}));

@@ -2,7 +2,7 @@ import { makeStyles } from '@material-ui/core/styles';
 
 const styles = {
   wrapper: {
-    background: 'red',
+    background: '#eaeaea',
     padding: '40px 0',
     minHeight: '70px',
   },

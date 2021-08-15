@@ -1,27 +1,10 @@
 import source from './source/api.json';
 import { byBrand, isValid, canBeSold, canBeRented } from './filters';
+import { formatData, paginate } from './helpers';
 
-const paginate = (array, limit, page) => {
-  const data = array.slice((page - 1) * limit, page * limit);
-  const pageTotal = Math.ceil(array.length / limit);
+const formatResults = (data) => data.map((res) => formatData(res));
 
-  return { data, currentPage: page, pageTotal };
-};
-
-const formatData = (data) =>
-  data.map((res) => ({
-    id: res.id,
-    city: res.address.city,
-    neighborhood: res.address.neighborhood,
-    price: res.pricingInfos.price,
-    rentalTotalPrice: res.pricingInfos.rentalTotalPrice || null,
-    gallery: res.images,
-    bathrooms: res.bathrooms,
-    bedrooms: res.bedrooms,
-    parkingSpaces: res.parkingSpaces,
-  }));
-
-const getData = ({ brand, businessType, page }) => {
+export const getData = ({ brand, businessType, page }) => {
   const dataApi = source.filter(isValid).filter(byBrand(brand));
 
   const setData = {
@@ -30,10 +13,14 @@ const getData = ({ brand, businessType, page }) => {
   };
 
   const data = setData[businessType] || dataApi;
-
-  const formattedData = formatData(data);
-
+  const formattedData = formatResults(data);
   return paginate(formattedData, 21, page);
 };
 
-export default getData;
+export const getDataById = ({ brand, id }) => {
+  const data = source
+    .filter(isValid)
+    .filter(byBrand(brand))
+    .find((res) => res.id === id);
+  return formatData(data);
+};

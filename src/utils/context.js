@@ -8,10 +8,13 @@ const Context = ({ children, location }) => {
   const params = new URLSearchParams(location.search);
   const page = params.get('page');
 
+  const zap = { name: 'zap', label: 'zap' };
+  const vivareal = { name: 'viva', label: 'vivareal' };
+
   const setBrand = {
-    zap: { name: 'zap', label: 'zap' },
-    vivareal: { name: 'viva', label: 'vivareal' },
-  } || { name: 'zap', label: 'zap' };
+    zap,
+    vivareal,
+  };
 
   const setBusinessType = {
     venda: { name: 'SALE', label: 'venda' },
@@ -22,7 +25,7 @@ const Context = ({ children, location }) => {
     <ApiContext.Provider
       value={{
         page: parseInt(page) || 1,
-        brand: setBrand[brand],
+        brand: setBrand[brand] || zap,
         businessType: setBusinessType[businessType],
       }}
     >
