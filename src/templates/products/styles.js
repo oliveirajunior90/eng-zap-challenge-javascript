@@ -1,6 +1,16 @@
-import styled from 'styled-components';
+import { makeStyles } from '@material-ui/core/styles';
 
-export const Title = styled.p`
-  color: ${({ theme }) => theme.color.primary};
-  font-weight: 700;
-`;
+const styles = {
+  wrapper: {
+    marginTop: '25px',
+    marginBottom: '25px',
+  },
+
+  pagination: {
+    margin: '20px 0 20px',
+    display: 'flex',
+    justifyContent: 'center',
+  },
+};
+
+export const useStyles = makeStyles(() => styles);

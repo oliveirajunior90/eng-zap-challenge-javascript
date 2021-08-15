@@ -1,26 +1,17 @@
 import React from 'react';
-import styled from 'styled-components';
-import LogoFooter from '../static/zap-footer.svg';
+import { useStyles } from './style';
+import LogoFooter from '../../static/zap-footer.svg';
 import { Container } from '@material-ui/core';
 
 const Footer = () => {
+  const classes = useStyles();
   return (
-    <Wrapper>
-      <Container fixed>
-        <Image src={LogoFooter} alt="logo-footer" />
+    <div className={classes.wrapper}>
+      <Container fixed maxWidth="md">
+        <img className={classes.image} src={LogoFooter} alt="logo-footer" />
       </Container>
-    </Wrapper>
+    </div>
   );
 };
-
-const Wrapper = styled.div`
-  background: ${({ theme }) => theme.color.primary};
-  padding: 40px 0;
-  min-height: 70px;
-`;
-
-const Image = styled.img`
-  width: 70px;
-`;
 
 export default Footer;

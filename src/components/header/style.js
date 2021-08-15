@@ -1,15 +1,18 @@
-import styled from 'styled-components';
+import { makeStyles } from '@material-ui/core/styles';
 
-const Flex = styled.div`
-  display: flex;
-`;
+const styles = {
+  image: {
+    width: '110px',
+    margin: '20px 0 20px',
+  },
 
-export const Image = styled.img`
-  width: 110px;
-  margin: 20px 0 20px;
-`;
+  wrapper: {
+    display: 'flex',
+    backgroundColor: '#fff',
+    boxShadow: '0 2px 8px 0 rgb(0 0 0 / 24%)',
+    position: 'relative',
+    zIndex: 9,
+  },
+};
 
-export const Wrapper = styled(Flex)`
-  background-color: #fff;
-  box-shadow: 0 2px 8px 0 rgb(0 0 0 / 24%);
-`;
+export const useStyles = makeStyles(() => styles);

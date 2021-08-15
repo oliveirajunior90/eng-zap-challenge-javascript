@@ -1,16 +1,27 @@
-const theme = {
-  viva: {
-    color: {
-      primary: 'blue',
-      secundary: '#EEE',
+import { createTheme } from '@material-ui/core/styles';
+
+const zap = {
+  palette: {
+    primary: {
+      main: '#dedede',
     },
-  },
-  zap: {
-    color: {
-      primary: '#007aa5',
-      secundary: '#EEE',
+    secondary: {
+      main: '#ffa500',
     },
   },
 };
 
-export default theme;
+const viva = {
+  palette: {
+    primary: {
+      main: '#dddd',
+    },
+    secondary: {
+      main: '#ffa500',
+    },
+  },
+};
+
+const theme = { zap, viva };
+
+export default createTheme(theme);

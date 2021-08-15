@@ -5,6 +5,19 @@ const paginate = (array, limit, page) => {
   return array.slice((page - 1) * limit, page * limit);
 };
 
+const formatData = (data) =>
+  data.map((res) => ({
+    id: res.id,
+    city: res.address.city,
+    neighborhood: res.address.neighborhood,
+    price: res.pricingInfos.price,
+    rentalTotalPrice: res.pricingInfos.rentalTotalPrice,
+    gallery: res.images,
+    bathrooms: res.bathrooms,
+    bedrooms: res.bedrooms,
+    parkingSpaces: res.parkingSpaces,
+  }));
+
 const getData = ({ brand, businessType, page = 1 }) => {
   const dataApi = source.filter(isValid).filter(byBrand(brand));
 
@@ -14,17 +27,9 @@ const getData = ({ brand, businessType, page = 1 }) => {
   };
 
   const data = setData[businessType] || dataApi;
-
-  return paginate(data, 20, page);
-  // const data2 = data.map((res) => {
-  //   return {
-  //     address: res.address.city,
-  //     lat: res.address.geoLocation.location.lat,
-  //     lon: res.address.geoLocation.location.lon,
-  //     preco: res.pricingInfos.price,
-  //     info: res.pricingInfos.businessType,
-  //   };
-  // });
+  console.log(data);
+  const formattedData = formatData(data);
+  return paginate(formattedData, 21, page);
 };
 
 export default getData;

@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { ThemeProvider } from 'styled-components';
+import { ThemeProvider, createTheme, CssBaseline } from '@material-ui/core';
 import themeConfig from './config';
 import GlobalStyles from './global-styles';
 
@@ -11,10 +11,12 @@ import Footer from '../components/footer';
 const Theme = (props) => {
   const { children } = props;
   const { brand } = useContext(ApiContext);
+  const theme = createTheme(themeConfig[brand]);
 
   return (
-    <ThemeProvider theme={themeConfig[brand]}>
+    <ThemeProvider theme={theme}>
       <GlobalStyles />
+      <CssBaseline />
       <Header />
       {children}
       <Footer />

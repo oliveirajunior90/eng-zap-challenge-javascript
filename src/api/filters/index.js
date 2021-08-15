@@ -6,8 +6,8 @@ export const canBeSold =
     if (businessType !== 'SALE') return false;
 
     const setRule = {
-      zap: price > 600000 && usableAreas > 0,
-      viva: price > 700000 && usableAreas > 0,
+      zap: price >= 600000 && usableAreas > 0,
+      viva: price <= 700000 && usableAreas > 0,
     };
 
     return setRule[brand];
@@ -21,8 +21,8 @@ export const canBeRented =
     if (businessType !== 'RENTAL') return false;
 
     const setRule = {
-      zap: rentalTotalPrice > 3500,
-      viva: rentalTotalPrice > 4000,
+      zap: rentalTotalPrice >= 3500,
+      viva: rentalTotalPrice <= 4000,
     };
 
     return setRule[brand];

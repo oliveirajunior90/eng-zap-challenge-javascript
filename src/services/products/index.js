@@ -1,13 +1,19 @@
 import React, { useContext } from 'react';
 import getData from '../../api';
-import { compose } from 'redux';
+
 import { ApiContext } from '../../utils/context';
 
 const withProducts = (Component) => () => {
   const { brand, businessType, page } = useContext(ApiContext);
   const data = getData({ brand, businessType, page });
 
-  return <Component data={data} />;
+  const type = !businessType
+    ? null
+    : businessType === 'SALE'
+    ? 'venda'
+    : 'aluguel';
+
+  return <Component products={data} businessType={type} />;
 };
 
-export default compose(withProducts);
+export default withProducts;

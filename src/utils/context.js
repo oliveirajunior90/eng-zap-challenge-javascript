@@ -10,8 +10,6 @@ const Context = ({ children, location }) => {
   const businessType = path[2];
   const page = path[3];
 
-  console.log(page);
-
   const setBrand =
     {
       zap: 'zap',
