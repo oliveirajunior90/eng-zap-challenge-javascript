@@ -13,15 +13,41 @@ const ProductCardsGrid = ({ products }) => (
   </Grid>
 );
 
-export const Products = ({ products, businessType }) => {
+const PaginationUI = ({ onChangePage, currentPage, pageTotal }) => {
+  const classes = useStyles();
+
+  if (pageTotal < 2) return null;
+
+  return (
+    <Pagination
+      onChange={onChangePage}
+      className={classes.pagination}
+      page={currentPage}
+      count={pageTotal}
+    />
+  );
+};
+
+export const Products = ({
+  products,
+  businessType,
+  pageTotal,
+  currentPage,
+  onChangePage,
+}) => {
+  console.log('furfles', typeof currentPage, pageTotal);
   const classes = useStyles();
   return (
     <>
       <Jumbotron text={businessType} />
-      <div className={classes.wrapper}>
+      <div className={classes.wrapper} id="wrapper">
         <Container fixed maxWidth="md">
           <ProductCardsGrid products={products} />
-          <Pagination className={classes.pagination} count={3} />
+          <PaginationUI
+            onChangePage={onChangePage}
+            currentPage={currentPage}
+            pageTotal={pageTotal}
+          />
         </Container>
       </div>
     </>

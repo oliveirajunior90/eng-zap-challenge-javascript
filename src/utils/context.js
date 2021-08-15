@@ -4,12 +4,9 @@ import { withRouter } from 'react-router-dom';
 export const ApiContext = React.createContext({});
 
 const Context = ({ children, location }) => {
-  const path = location.pathname.split('/', 4);
-
-  const brand = path[1];
-  const businessType = path[2];
-  const page = path[3];
-
+  const [, brand, businessType] = location.pathname.split('/', 4);
+  const params = new URLSearchParams(location.search);
+  const page = params.get('page');
   const setBrand =
     {
       zap: 'zap',
@@ -24,7 +21,7 @@ const Context = ({ children, location }) => {
   return (
     <ApiContext.Provider
       value={{
-        page,
+        page: parseInt(page) || 1,
         brand: setBrand[brand],
         businessType: setBusinessType[businessType],
       }}

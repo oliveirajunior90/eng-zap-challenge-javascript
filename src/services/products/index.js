@@ -3,17 +3,38 @@ import getData from '../../api';
 
 import { ApiContext } from '../../utils/context';
 
-const withProducts = (Component) => () => {
+const types =
+  {
+    SALE: 'venda',
+    RENTAL: 'aluguel',
+  } || null;
+
+const withProducts = (Component) => (props) => {
+  const { history, location } = props;
   const { brand, businessType, page } = useContext(ApiContext);
-  const data = getData({ brand, businessType, page });
 
-  const type = !businessType
-    ? null
-    : businessType === 'SALE'
-    ? 'venda'
-    : 'aluguel';
+  const { data, currentPage, pageTotal } = getData({
+    brand,
+    businessType,
+    page,
+  });
 
-  return <Component products={data} businessType={type} />;
+  const onChangePage = (event, value) => {
+    history.push({
+      pathname: location.pathname,
+      search: '?page=' + value,
+    });
+  };
+
+  return (
+    <Component
+      products={data}
+      currentPage={currentPage}
+      pageTotal={pageTotal}
+      businessType={types[businessType]}
+      onChangePage={onChangePage}
+    />
+  );
 };
 
 export default withProducts;
