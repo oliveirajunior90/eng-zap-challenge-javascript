@@ -1,6 +1,7 @@
 import Products from './templates/products';
 import { Switch, Route, BrowserRouter as Router } from 'react-router-dom';
 import Context from './utils/context';
+import Theme from './theme';
 
 const SwitchRoutes = () => {
   return (
@@ -34,7 +35,9 @@ const App = () => {
   return (
     <Router>
       <Context>
-        <SwitchRoutes />
+        <Theme>
+          <SwitchRoutes />
+        </Theme>
       </Context>
     </Router>
   );

@@ -1,14 +1,38 @@
 import React from 'react';
 import { useStyles } from './style';
-import Logo from '../../static/zap.svg';
+import { Link } from 'react-router-dom';
 import { Container } from '@material-ui/core';
 
-const Header = () => {
+import LogoFooter from '../../static/zap-footer.svg';
+import ZapLogo from '../../static/zap.svg';
+
+const logo = {
+  viva: LogoFooter,
+  zap: ZapLogo,
+};
+
+const Header = ({ brand }) => {
   const classes = useStyles();
   return (
     <div className={classes.wrapper}>
       <Container fixed maxWidth="md">
-        <img className={classes.image} src={Logo} alt="logo" />
+        <div className={classes.flex}>
+          <div className={classes.logoArea}>
+            <img className={classes.image} src={logo[brand.name]} alt="logo" />
+          </div>
+          <ul className={classes.menu}>
+            <li className={classes.menuItem}>
+              <Link className={classes.link} to={`/${brand.label}/venda`}>
+                Comprar
+              </Link>
+            </li>
+            <li className={classes.link}>
+              <Link className={classes.link} to={`/${brand.label}/aluguel`}>
+                Alugar
+              </Link>
+            </li>
+          </ul>
+        </div>
       </Container>
     </div>
   );

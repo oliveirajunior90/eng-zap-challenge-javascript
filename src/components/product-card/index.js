@@ -8,8 +8,7 @@ import { Link } from 'react-router-dom';
 import { SamplePrevArrow, SampleNextArrow } from '../arrows';
 
 const slide = {
-  autoPlay: true,
-  autoplaySpeed: 3000,
+  autoPlay: false,
   slidesToShow: 1,
   swipe: true,
   arrows: true,
@@ -22,7 +21,9 @@ const CustomCarousel = ({ gallery }) => {
   return (
     <Carousel {...slide}>
       {gallery.map((item, i) => (
-        <img className={classes.image} key={i} src={item} alt="carousel" />
+        <div key={`a-${i}`} className={classes.imageWrapper}>
+          <img className={classes.image} key={i} src={item} alt="carousel" />
+        </div>
       ))}
     </Carousel>
   );

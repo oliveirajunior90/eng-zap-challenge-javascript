@@ -7,15 +7,15 @@ const Context = ({ children, location }) => {
   const [, brand, businessType] = location.pathname.split('/', 4);
   const params = new URLSearchParams(location.search);
   const page = params.get('page');
-  const setBrand =
-    {
-      zap: 'zap',
-      vivareal: 'viva',
-    } || 'zap';
+
+  const setBrand = {
+    zap: { name: 'zap', label: 'zap' },
+    vivareal: { name: 'viva', label: 'vivareal' },
+  } || { name: 'zap', label: 'zap' };
 
   const setBusinessType = {
-    venda: 'SALE',
-    aluguel: 'RENTAL',
+    venda: { name: 'SALE', label: 'venda' },
+    aluguel: { name: 'RENTAL', label: 'aluguel' },
   };
 
   return (

@@ -35,11 +35,10 @@ export const Products = ({
   currentPage,
   onChangePage,
 }) => {
-  console.log('furfles', typeof currentPage, pageTotal);
   const classes = useStyles();
   return (
     <>
-      <Jumbotron text={businessType} />
+      <Jumbotron text={businessType.label} />
       <div className={classes.wrapper} id="wrapper">
         <Container fixed maxWidth="md">
           <ProductCardsGrid products={products} />

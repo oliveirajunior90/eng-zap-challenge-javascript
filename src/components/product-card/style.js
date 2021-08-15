@@ -2,7 +2,7 @@ import { makeStyles } from '@material-ui/core/styles';
 
 const styles = {
   image: {
-    height: '219px',
+    height: '230px',
   },
   neighborhood: {
     margin: '0',
