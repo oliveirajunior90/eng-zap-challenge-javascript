@@ -1,7 +1,7 @@
 import React from 'react';
 import { compose } from 'redux';
 import withStyles from './style';
-import withSingle from '../../services/product';
+import withSingle from '../../services/single';
 import { Container } from '@material-ui/core';
 import SingleBedIcon from '@material-ui/icons/SingleBed';
 import BathtubIcon from '@material-ui/icons/Bathtub';
