@@ -7,7 +7,9 @@ export const useStyles = makeStyles((theme) => ({
     color: 'white',
     fontWeight: 200,
     [theme.breakpoints.down('sm')]: {
+      fontSize: '20px',
       lineHeight: '20px',
+      fontWeight: 400,
     },
   },
 

@@ -35,6 +35,20 @@ const Gallery = ({ gallery, classes }) => (
   </Carousel>
 );
 
+const renderAcomodations = (acomodations, classes) =>
+  acomodations.map((data, index) => {
+    return (
+      data.area > 0 && (
+        <div key={`i${index}`} className={classes.area}>
+          <data.Icon />
+          <span>
+            {data.area} {data.area > 1 ? `${data.text}s` : data.text}
+          </span>
+        </div>
+      )
+    );
+  });
+
 const Single = ({
   gallery,
   neighborhood,
@@ -49,6 +63,25 @@ const Single = ({
   usableAreas,
 }) => {
   const classes = useStyles();
+
+  const acomodations = [
+    {
+      area: bedrooms,
+      Icon: () => <SingleBedIcon />,
+      text: 'quarto',
+    },
+    {
+      area: bathrooms,
+      Icon: () => <BathtubIcon />,
+      text: 'banheiro',
+    },
+    {
+      area: parkingSpaces,
+      Icon: () => <DirectionsCarIcon />,
+      text: 'vaga',
+    },
+  ];
+
   return (
     <>
       <Gallery gallery={gallery} classes={classes} />
@@ -63,30 +96,7 @@ const Single = ({
           )}
           <span className={classes.price}>{price || rentalTotalPrice}</span>
           <div className={classes.acommodations}>
-            {bedrooms > 0 && (
-              <div className={classes.area}>
-                <SingleBedIcon />
-                <span>
-                  {bedrooms} {bedrooms > 1 ? ' quartos' : ' quarto'}
-                </span>
-              </div>
-            )}
-            {bathrooms > 0 && (
-              <div className={classes.area}>
-                <BathtubIcon />
-                <span>
-                  {bathrooms} {bathrooms > 1 ? ' banheiros' : ' banheiro'}
-                </span>
-              </div>
-            )}
-            {parkingSpaces > 0 && (
-              <div className={classes.area}>
-                <DirectionsCarIcon />
-                <span>
-                  {parkingSpaces} {parkingSpaces > 1 ? ' vagas' : ' vaga'}
-                </span>
-              </div>
-            )}
+            {renderAcomodations(acomodations, classes)}
           </div>
           <Button variant="contained" onClick={handleBack}>
             voltar
