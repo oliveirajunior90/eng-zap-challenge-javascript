@@ -3,11 +3,13 @@ export const canBeSold =
   ({ pricingInfos, usableAreas }) => {
     const { price } = pricingInfos;
 
-    if (businessType !== 'SALE') return false;
+    if (businessType !== 'SALE' || usableAreas < 1) return false;
+
+    const squareValue = price / usableAreas;
 
     const setRule = {
-      zap: price >= 600000 && usableAreas > 0,
-      viva: price <= 700000 && usableAreas > 0,
+      zap: price >= 600000 && squareValue > 3500,
+      viva: price <= 700000,
     };
 
     return setRule[brand];
@@ -16,9 +18,9 @@ export const canBeSold =
 export const canBeRented =
   (brand, businessType) =>
   ({ pricingInfos }) => {
-    const { rentalTotalPrice } = pricingInfos;
+    const { rentalTotalPrice, monthlyCondoFee } = pricingInfos;
 
-    if (businessType !== 'RENTAL') return false;
+    if (businessType !== 'RENTAL' || !monthlyCondoFee) return false;
 
     const setRule = {
       zap: rentalTotalPrice >= 3500,

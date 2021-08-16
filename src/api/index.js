@@ -14,6 +14,7 @@ export const getData = ({ brand, businessType, page }) => {
 
   const data = setData[businessType] || dataApi;
   const formattedData = formatResults(data);
+
   return paginate(formattedData, 21, page);
 };
 
