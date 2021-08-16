@@ -1,6 +1,6 @@
-import { makeStyles } from '@material-ui/core/styles';
+import { withStyles } from '@material-ui/core';
 
-export const useStyles = makeStyles((theme) => ({
+const styles = (theme) => ({
   neighborhood: {
     fontSze: '30px',
     fontWeight: '700',
@@ -54,4 +54,6 @@ export const useStyles = makeStyles((theme) => ({
       height: '200px',
     },
   },
-}));
+});
+
+export default withStyles(styles);

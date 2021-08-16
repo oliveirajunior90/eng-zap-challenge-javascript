@@ -1,5 +1,6 @@
 import React from 'react';
-import { useStyles } from './style';
+import { compose } from 'redux';
+import withStyles from './style';
 import withSingle from '../../services/product';
 import { Container } from '@material-ui/core';
 import SingleBedIcon from '@material-ui/icons/SingleBed';
@@ -61,9 +62,8 @@ const Single = ({
   handleBack,
   parkingSpaces,
   usableAreas,
+  classes,
 }) => {
-  const classes = useStyles();
-
   const acomodations = [
     {
       area: bedrooms,
@@ -107,4 +107,5 @@ const Single = ({
   );
 };
 
-export default withSingle(Single);
+const withComponents = compose(withSingle, withStyles);
+export default withComponents(Single);

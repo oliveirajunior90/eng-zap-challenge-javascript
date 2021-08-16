@@ -1,4 +1,4 @@
-import { makeStyles } from '@material-ui/core/styles';
+import { withStyles } from '@material-ui/core/';
 
 const styles = {
   wrapper: {
@@ -13,4 +13,4 @@ const styles = {
   },
 };
 
-export const useStyles = makeStyles(() => styles);
+export default withStyles(styles);

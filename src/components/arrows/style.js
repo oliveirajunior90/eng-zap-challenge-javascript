@@ -1,4 +1,4 @@
-import { makeStyles } from '@material-ui/core/styles';
+import { withStyles } from '@material-ui/core';
 
 const stylesArrow = {
   top: '99px',
@@ -12,7 +12,7 @@ const stylesArrow = {
   borderRadius: '18px',
 };
 
-const styles = {
+const styles = () => ({
   icon: {
     color: 'white',
     fontSize: '14px',
@@ -29,6 +29,6 @@ const styles = {
     justifyContent: 'flex-end',
     left: '5px',
   },
-};
+});
 
-export const useStyles = makeStyles(() => styles);
+export default withStyles(styles);

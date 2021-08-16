@@ -1,4 +1,5 @@
-import { useStyles } from './style';
+import withStyles from './style';
+import { compose } from 'redux';
 import withProducts from '../../services/products';
 import ProductCard from '../../components/product-card';
 import Jumbotron from '../../components/jumpbotrom';
@@ -21,9 +22,7 @@ const ProductCardList = ({ products, brand }) => {
   );
 };
 
-const PaginationUI = ({ onChangePage, currentPage, pageTotal }) => {
-  const classes = useStyles();
-
+const PaginationUI = ({ onChangePage, currentPage, pageTotal, classes }) => {
   if (pageTotal < 2) return null;
 
   return (
@@ -43,23 +42,23 @@ export const Products = ({
   currentPage,
   onChangePage,
   brand,
-}) => {
-  const classes = useStyles();
-  return (
-    <>
-      <Jumbotron text={businessType.label} />
-      <div className={classes.wrapper} id="wrapper">
-        <Container fixed maxWidth="md">
-          <ProductCardList products={products} brand={brand} />
-          <PaginationUI
-            onChangePage={onChangePage}
-            currentPage={currentPage}
-            pageTotal={pageTotal}
-          />
-        </Container>
-      </div>
-    </>
-  );
-};
+  classes,
+}) => (
+  <>
+    <Jumbotron text={businessType.label} />
+    <div className={classes.wrapper} id="wrapper">
+      <Container fixed maxWidth="md">
+        <ProductCardList products={products} brand={brand} />
+        <PaginationUI
+          classes={classes}
+          onChangePage={onChangePage}
+          currentPage={currentPage}
+          pageTotal={pageTotal}
+        />
+      </Container>
+    </div>
+  </>
+);
 
-export default withProducts(Products);
+const withComponents = compose(withProducts, withStyles);
+export default withComponents(Products);

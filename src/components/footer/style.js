@@ -1,6 +1,6 @@
-import { makeStyles } from '@material-ui/core/styles';
+import { withStyles } from '@material-ui/core';
 
-const styles = {
+const styles = () => ({
   wrapper: {
     background: '#eaeaea',
     padding: '40px 0',
@@ -10,6 +10,6 @@ const styles = {
   image: {
     width: '70px',
   },
-};
+});
 
-export const useStyles = makeStyles(() => styles);
+export default withStyles(styles);

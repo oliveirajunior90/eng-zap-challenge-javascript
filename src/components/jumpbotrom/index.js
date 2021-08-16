@@ -1,9 +1,8 @@
 import React from 'react';
-import { useStyles } from './style';
+import { styles } from './style';
+import { withStyles } from '@material-ui/core';
 
-const Jumbotron = ({ text }) => {
-  const classes = useStyles();
-
+const Jumbotron = ({ text, classes }) => {
   if (!text) {
     return null;
   }
@@ -14,4 +13,4 @@ const Jumbotron = ({ text }) => {
     </div>
   );
 };
-export default Jumbotron;
+export default withStyles(styles)(Jumbotron);
