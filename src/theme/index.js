@@ -11,15 +11,16 @@ import Footer from 'components/footer';
 const Theme = (props) => {
   const { children } = props;
   const context = useContext(ApiContext);
-  const theme = createTheme(config[context.brand.name]);
+  const { brand, location } = context;
+  const theme = createTheme(config[brand.name]);
 
   return (
     <ThemeProvider theme={theme}>
       <GlobalStyles />
       <CssBaseline />
-      <Header {...context} />
+      {location.pathname !== '/' && <Header {...context} />}
       {children}
-      <Footer {...context} />
+      {location.pathname !== '/' && <Footer {...context} />}
     </ThemeProvider>
   );
 };

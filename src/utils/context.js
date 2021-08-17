@@ -27,6 +27,7 @@ const Context = ({ children, location }) => {
         page: parseInt(page) || 1,
         brand: setBrand[brand] || zap,
         businessType: setBusinessType[businessType] || null,
+        location,
       }}
     >
       {children}

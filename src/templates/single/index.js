@@ -44,8 +44,8 @@ const Gallery = ({ gallery, classes }) => (
 );
 
 const renderAcomodations = (acomodations, classes) =>
-  acomodations.map((data, index) => {
-    return (
+  acomodations.map(
+    (data, index) =>
       data.area > 0 && (
         <div key={`i${index}`} className={classes.area}>
           <data.Icon />
@@ -54,8 +54,7 @@ const renderAcomodations = (acomodations, classes) =>
           </span>
         </div>
       )
-    );
-  });
+  );
 
 const Single = ({
   gallery,

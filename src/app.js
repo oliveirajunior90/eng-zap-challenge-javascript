@@ -1,8 +1,14 @@
-import Products from './templates/products';
-import Single from './templates/single';
-import { Switch, Route, BrowserRouter as Router } from 'react-router-dom';
-import Context from './utils/context';
-import Theme from './theme';
+import Products from 'templates/products';
+import Single from 'templates/single';
+import Welcome from 'templates/welcome';
+import {
+  Switch,
+  Route,
+  BrowserRouter as Router,
+  Redirect,
+} from 'react-router-dom';
+import Context from 'utils/context';
+import Theme from 'theme';
 
 const SwitchRoutes = () => {
   return (
@@ -34,10 +40,16 @@ const SwitchRoutes = () => {
       />
       <Route
         exact
-        path="/vivareal/imovel/:id"
+        path={['/vivareal/imovel/:id']}
         render={(props) => <Single {...props} />}
       />
-      <Route exact path="/*" render={() => <div>Página de Erro</div>} />
+      <Route
+        exact
+        path="/vivareal"
+        render={() => <Redirect to="/vivareal/venda/" />}
+      />
+      <Route exact path="/zap" render={() => <Redirect to="/zap/venda/" />} />
+      <Route exact path="/" render={(props) => <Welcome {...props} />} />
     </Switch>
   );
 };
