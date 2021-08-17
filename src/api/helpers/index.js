@@ -11,6 +11,9 @@ const pricingToNumber = (value) => {
   return parseFloat(value);
 };
 
+const formatGallery = (images) =>
+  images.map((res) => res.replace('http', 'https'));
+
 export const formatData = (res) => {
   const rentalTotalPrice = pricingToNumber(res.pricingInfos.rentalTotalPrice);
   const monthlyCondoFee = pricingToNumber(res.pricingInfos.monthlyCondoFee);
@@ -26,7 +29,7 @@ export const formatData = (res) => {
     monthlyCondoFee,
     rentalTotalPrice,
     type: rentalTotalPrice ? 'aluguel' : 'venda',
-    gallery: res.images,
+    gallery: formatGallery(res.images),
     bathrooms: res.bathrooms,
     bedrooms: res.bedrooms,
     parkingSpaces: res.parkingSpaces,
