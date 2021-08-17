@@ -3,6 +3,7 @@ import Carousel from 'react-slick';
 import withStyles from './style';
 import { Card } from '@material-ui/core';
 import { PrevArrow, NextArrow } from '../arrows';
+import { formatCurrency } from '../../utils/currency';
 
 const slide = {
   autoPlay: false,
@@ -27,7 +28,13 @@ const Details = ({ data, classes }) => (
   <div className={classes.wrapperDetails}>
     <h3 className={classes.neighborhood}>{data.neighborhood}</h3>
     <span className={classes.city}>{data.city}</span>
-    <span className={classes.price}>{data.price}</span>
+    {data.type === 'venda' ? (
+      <span className={classes.price}>{formatCurrency(data.price)}</span>
+    ) : (
+      <span className={classes.price}>
+        {formatCurrency(data.rentalTotalPrice)}
+      </span>
+    )}
   </div>
 );
 

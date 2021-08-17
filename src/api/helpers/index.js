@@ -1,4 +1,4 @@
-import { formatCurrency } from '../../utils/currency';
+//import { formatCurrency } from '../../utils/currency';
 
 export const paginate = (array, limit, page) => {
   const data = array.slice((page - 1) * limit, page * limit);
@@ -7,16 +7,31 @@ export const paginate = (array, limit, page) => {
   return { data, currentPage: page, pageTotal };
 };
 
-export const formatData = (res) => ({
-  id: res.id,
-  city: res.address.city,
-  neighborhood: res.address.neighborhood,
-  price: formatCurrency(res.pricingInfos.price),
-  type: res.pricingInfos.rentalTotalPrice ? 'aluguel' : 'venda',
-  rentalTotalPrice: formatCurrency(res.pricingInfos.rentalTotalPrice) || null,
-  gallery: res.images,
-  bathrooms: res.bathrooms,
-  bedrooms: res.bedrooms,
-  parkingSpaces: res.parkingSpaces,
-  usableAreas: res.usableAreas,
-});
+const pricingToNumber = (value) => {
+  if (!value) return null;
+
+  return parseFloat(value);
+};
+
+export const formatData = (res) => {
+  const rentalTotalPrice = pricingToNumber(res.pricingInfos.rentalTotalPrice);
+  const monthlyCondoFee = pricingToNumber(res.pricingInfos.monthlyCondoFee);
+  const price = pricingToNumber(res.pricingInfos.price);
+  const location = res.address.geoLocation.location;
+
+  return {
+    id: res.id,
+    city: res.address.city,
+    location,
+    neighborhood: res.address.neighborhood,
+    price,
+    monthlyCondoFee,
+    rentalTotalPrice,
+    type: rentalTotalPrice ? 'aluguel' : 'venda',
+    gallery: res.images,
+    bathrooms: res.bathrooms,
+    bedrooms: res.bedrooms,
+    parkingSpaces: res.parkingSpaces,
+    usableAreas: res.usableAreas,
+  };
+};

@@ -8,6 +8,7 @@ import BathtubIcon from '@material-ui/icons/Bathtub';
 import DirectionsCarIcon from '@material-ui/icons/DirectionsCar';
 import Carousel from 'react-slick';
 import Button from '@material-ui/core/Button';
+import { formatCurrency } from '../../utils/currency';
 
 const slide = {
   autoplay: true,
@@ -94,7 +95,9 @@ const Single = ({
           {city && (
             <span className={classes.city}>localizado na cidade de {city}</span>
           )}
-          <span className={classes.price}>{price || rentalTotalPrice}</span>
+          <span className={classes.price}>
+            {formatCurrency(price) || formatCurrency(rentalTotalPrice)}
+          </span>
           <div className={classes.acommodations}>
             {renderAcomodations(acomodations, classes)}
           </div>

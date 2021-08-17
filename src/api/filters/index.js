@@ -1,9 +1,12 @@
-export const canBeSold =
-  (brand, businessType) =>
-  ({ pricingInfos, usableAreas }) => {
-    const { price } = pricingInfos;
+const checkCondoFee = (monthlyCondoFee, rentalTotalPrice) => {
+  const thirdPartTotalPrice = (30 / 100) * rentalTotalPrice;
+  return monthlyCondoFee < thirdPartTotalPrice;
+};
 
-    if (businessType !== 'SALE' || usableAreas < 1) return false;
+export const canBeSold =
+  (brand) =>
+  ({ type, usableAreas, price }) => {
+    if (type !== 'venda' || usableAreas < 1) return false;
 
     const squareValue = price / usableAreas;
 
@@ -16,29 +19,29 @@ export const canBeSold =
   };
 
 export const canBeRented =
-  (brand, businessType) =>
-  ({ pricingInfos }) => {
-    const { rentalTotalPrice, monthlyCondoFee } = pricingInfos;
+  (brand) =>
+  ({ type, rentalTotalPrice, monthlyCondoFee }) => {
+    if (type !== 'aluguel' || !monthlyCondoFee) return false;
 
-    if (businessType !== 'RENTAL' || !monthlyCondoFee) return false;
+    const isValidCondoFee = checkCondoFee(monthlyCondoFee, rentalTotalPrice);
 
     const setRule = {
       zap: rentalTotalPrice >= 3500,
-      viva: rentalTotalPrice <= 4000,
+      viva: rentalTotalPrice <= 4000 && isValidCondoFee,
     };
 
     return setRule[brand];
   };
 
-export const isValid = ({ address }) => {
-  const { lat, lon } = address.geoLocation.location;
+export const isValid = ({ location }) => {
+  const { lat, lon } = location;
   return lat !== 0 && lon !== 0;
 };
 
 export const byBrand =
   (brand) =>
-  ({ address }) => {
-    const { lon, lat } = address.geoLocation.location;
+  ({ location }) => {
+    const { lon, lat } = location;
 
     if (!brand) return true;
 
