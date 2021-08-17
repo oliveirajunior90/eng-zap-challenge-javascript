@@ -19,9 +19,15 @@ const slide = {
   arrows: false,
   responsive: [
     {
+      breakpoint: 1199,
+      settings: {
+        slidesToShow: 3,
+      },
+    },
+    {
       breakpoint: 568,
       settings: {
-        slidesToShow: 1,
+        slidesToShow: 2,
       },
     },
   ],

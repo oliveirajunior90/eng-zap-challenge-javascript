@@ -23,7 +23,7 @@ const Header = ({ brand, classes }) => (
               Comprar
             </Link>
           </li>
-          <li className={classes.link}>
+          <li className={classes.menuItem}>
             <Link className={classes.link} to={`/${brand.label}/aluguel`}>
               Alugar
             </Link>

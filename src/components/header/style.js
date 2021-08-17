@@ -21,26 +21,36 @@ const styles = (theme) => ({
   flex: {
     display: 'flex',
     alignItems: 'center',
+    [theme.breakpoints.down('sm')]: {
+      flexDirection: 'column',
+    },
   },
 
   menu: {
     display: 'flex',
     listStyleType: 'none',
     alignItems: 'center',
-    [theme.breakpoints.down('sm')]: {
-      display: 'none',
+    paddingLeft: 0,
+  },
+
+  menuItem: {
+    borderLeft: '1px solid #ccc',
+    '&:first-child': {
+      borderLeft: 0,
     },
   },
 
   link: {
-    padding: '25px 0px 25px 0',
-    marginLeft: '25px',
-    fontWeight: 200,
+    padding: '25px 25px 25px 20px',
     fontSize: '15px',
     color: '#6f6f6f',
-    borderLeft: '1px solid #ccc',
-    '&:first-child': {
-      borderLeft: 0,
+    textTransform: 'uppercase',
+    fontWeight: 600,
+    [theme.breakpoints.down('sm')]: {
+      padding: '6px 13px',
+    },
+    'li > &:first-child': {
+      padding: '25px 25px 25px 26px',
     },
   },
 });
