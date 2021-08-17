@@ -1,7 +1,7 @@
 import React from 'react';
 import withStyles from './style';
-import ZapLogo from '../../static/zap-footer.svg';
-import VivaLogo from '../../static/vivareal.png';
+import ZapLogo from 'static/zap-footer.svg';
+import VivaLogo from 'static/vivareal.png';
 import { Container } from '@material-ui/core';
 
 const logo = {

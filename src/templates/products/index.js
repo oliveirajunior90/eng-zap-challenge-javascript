@@ -1,8 +1,8 @@
 import withStyles from './style';
 import { compose } from 'redux';
-import withProducts from '../../services/products';
-import ProductCard from '../../components/product-card';
-import Jumbotron from '../../components/jumpbotrom';
+import withProducts from 'services/products';
+import ProductCard from 'components/product-card';
+import Jumbotron from 'components/jumpbotrom';
 import { Container, Grid } from '@material-ui/core';
 import Pagination from '@material-ui/lab/Pagination';
 import { Link } from 'react-router-dom';

@@ -1,4 +1,4 @@
-import { byBrand } from '../../filters';
+import { byBrand } from 'api/filters';
 describe('byBrand filter', () => {
   it('should be Viva Real', () => {
     const filter = {

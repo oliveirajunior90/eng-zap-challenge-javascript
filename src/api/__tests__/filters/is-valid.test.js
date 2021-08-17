@@ -1,4 +1,4 @@
-import { isValid } from '../../filters';
+import { isValid } from 'api/filters';
 
 describe('isValid filter', () => {
   it('should return true when a valid field is passed', () => {

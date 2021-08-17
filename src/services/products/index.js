@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
-import { getData } from '../../api';
+import { getData } from 'api';
 
-import { ApiContext } from '../../utils/context';
+import { ApiContext } from 'utils/context';
 
 const withProducts = (Component) => (props) => {
   const { history, location } = props;

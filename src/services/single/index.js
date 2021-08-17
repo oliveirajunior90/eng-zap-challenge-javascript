@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
-import { ApiContext } from '../../utils/context';
-import { getDataById } from '../../api';
+import { ApiContext } from 'utils/context';
+import { getDataById } from 'api';
 
 const withSingle =
   (Component) =>

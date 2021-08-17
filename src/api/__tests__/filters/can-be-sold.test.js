@@ -1,4 +1,4 @@
-import { canBeSold } from '../../filters';
+import { canBeSold } from 'api/filters';
 
 describe('can be sold filter', () => {
   describe('ZAP', () => {

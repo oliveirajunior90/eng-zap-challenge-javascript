@@ -2,8 +2,8 @@ import React from 'react';
 import withStyles from './style';
 import { Link } from 'react-router-dom';
 import { Container } from '@material-ui/core';
-import VivaLogo from '../../static/vivareal.png';
-import ZapLogo from '../../static/zap.svg';
+import VivaLogo from 'static/vivareal.png';
+import ZapLogo from 'static/zap.svg';
 
 const logo = {
   viva: VivaLogo,

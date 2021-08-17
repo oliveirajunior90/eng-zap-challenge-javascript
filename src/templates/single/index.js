@@ -1,14 +1,14 @@
 import React from 'react';
 import { compose } from 'redux';
 import withStyles from './style';
-import withSingle from '../../services/single';
+import withSingle from 'services/single';
 import { Container } from '@material-ui/core';
 import SingleBedIcon from '@material-ui/icons/SingleBed';
 import BathtubIcon from '@material-ui/icons/Bathtub';
 import DirectionsCarIcon from '@material-ui/icons/DirectionsCar';
 import Carousel from 'react-slick';
 import Button from '@material-ui/core/Button';
-import { formatCurrency } from '../../utils/currency';
+import { formatCurrency } from 'utils/currency';
 
 const slide = {
   autoplay: true,

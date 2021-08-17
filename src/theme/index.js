@@ -3,10 +3,10 @@ import { ThemeProvider, createTheme, CssBaseline } from '@material-ui/core';
 import { config } from './config';
 import GlobalStyles from './global-styles';
 
-import { ApiContext } from '../utils/context';
+import { ApiContext } from 'utils/context';
 
-import Header from '../components/header';
-import Footer from '../components/footer';
+import Header from 'components/header';
+import Footer from 'components/footer';
 
 const Theme = (props) => {
   const { children } = props;

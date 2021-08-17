@@ -1,4 +1,4 @@
-import { canBeRented } from '../../filters';
+import { canBeRented } from 'api/filters';
 
 describe('can be rented', () => {
   describe('ZAP', () => {

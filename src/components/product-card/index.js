@@ -2,8 +2,8 @@ import React from 'react';
 import Carousel from 'react-slick';
 import withStyles from './style';
 import { Card } from '@material-ui/core';
-import { PrevArrow, NextArrow } from '../arrows';
-import { formatCurrency } from '../../utils/currency';
+import { PrevArrow, NextArrow } from 'components/arrows';
+import { formatCurrency } from 'utils/currency';
 
 const slide = {
   autoPlay: false,

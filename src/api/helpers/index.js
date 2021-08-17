@@ -1,5 +1,3 @@
-//import { formatCurrency } from '../../utils/currency';
-
 export const paginate = (array, limit, page) => {
   const data = array.slice((page - 1) * limit, page * limit);
   const pageTotal = Math.ceil(array.length / limit);
