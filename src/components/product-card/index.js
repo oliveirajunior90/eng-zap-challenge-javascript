@@ -1,9 +1,10 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Carousel from 'react-slick';
 import withStyles from './style';
 import { Card } from '@material-ui/core';
 import { PrevArrow, NextArrow } from 'components/arrows';
 import { formatCurrency } from 'utils/currency';
+import Skeleton from '@material-ui/lab/Skeleton';
 
 const slide = {
   autoPlay: false,
@@ -38,11 +39,24 @@ const Details = ({ data, classes }) => (
   </div>
 );
 
-const ProductCard = ({ data, classes }) => (
-  <Card>
-    <CustomCarousel gallery={data.gallery} classes={classes} />
-    <Details data={data} classes={classes} />
-  </Card>
-);
+const ProductCard = ({ data, classes }) => {
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    setInterval(() => {}, 10000);
+    setLoading(false);
+  }, []);
+
+  return (
+    <Card>
+      {loading ? (
+        <Skeleton variant="rect" width="100%" height={350} />
+      ) : (
+        <CustomCarousel gallery={data.gallery} classes={classes} />
+      )}
+      <Details data={data} classes={classes} />
+    </Card>
+  );
+};
 
 export default withStyles(ProductCard);

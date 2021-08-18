@@ -1,6 +1,6 @@
 import { withStyles } from '@material-ui/core';
 
-const styles = {
+const styles = (theme) => ({
   container: {
     width: '100%',
     height: '100%',
@@ -60,7 +60,11 @@ const styles = {
   wrapper: {
     display: 'flex',
     alignItems: 'center',
+    [theme.breakpoints.down('sm')]: {
+      flexDirection: 'column',
+      justifyContent: 'center',
+    },
   },
-};
+});
 
 export default withStyles(styles);

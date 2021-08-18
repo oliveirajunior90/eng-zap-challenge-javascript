@@ -6,6 +6,8 @@ import Jumbotron from 'components/jumpbotrom';
 import { Container, Grid } from '@material-ui/core';
 import Pagination from '@material-ui/lab/Pagination';
 import { Link } from 'react-router-dom';
+import withLoading from 'components/with-loading';
+import LinearProgress from '@material-ui/core/LinearProgress';
 
 const ProductCardList = ({ products, brand }) => {
   const link = `/${brand.label}/imovel/`;
@@ -35,6 +37,13 @@ const PaginationUI = ({ onChangePage, currentPage, pageTotal, classes }) => {
   );
 };
 
+const Loading = ({ progress, classes }) => (
+  <div className={classes.loading}>
+    <LinearProgress variant="determinate" value={progress} />
+    <p className={classes.loadingText}>Carregando...</p>
+  </div>
+);
+
 export const Products = ({
   products,
   businessType,
@@ -43,22 +52,29 @@ export const Products = ({
   onChangePage,
   brand,
   classes,
-}) => (
-  <>
-    <Jumbotron text={businessType.label} />
-    <div className={classes.wrapper} id="wrapper">
-      <Container fixed maxWidth="md">
-        <ProductCardList products={products} brand={brand} />
-        <PaginationUI
-          classes={classes}
-          onChangePage={onChangePage}
-          currentPage={currentPage}
-          pageTotal={pageTotal}
-        />
-      </Container>
-    </div>
-  </>
-);
+  counter,
+}) => {
+  return (
+    <>
+      <Jumbotron text={businessType.label} />
+      <div className={classes.wrapper} id="wrapper">
+        {counter < 100 ? (
+          <Loading progress={counter} classes={classes} />
+        ) : (
+          <Container fixed maxWidth="md">
+            <ProductCardList products={products} brand={brand} />
+            <PaginationUI
+              classes={classes}
+              onChangePage={onChangePage}
+              currentPage={currentPage}
+              pageTotal={pageTotal}
+            />
+          </Container>
+        )}
+      </div>
+    </>
+  );
+};
 
-const withComponents = compose(withProducts, withStyles);
+const withComponents = compose(withProducts, withLoading, withStyles);
 export default withComponents(Products);
