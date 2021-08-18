@@ -9,12 +9,14 @@ const logo = {
   zap: ZapLogo,
 };
 
-const Footer = ({ brand, classes }) => (
-  <div className={classes.wrapper}>
-    <Container fixed maxWidth="md">
-      <img className={classes.image} src={logo[brand.name]} alt="logo" />
-    </Container>
-  </div>
-);
+const Footer = ({ brand, classes }) => {
+  return (
+    <div className={classes.wrapper}>
+      <Container fixed maxWidth="md">
+        <img className={classes.image} src={logo[brand.name]} alt="logo" />
+      </Container>
+    </div>
+  );
+};
 
 export default withStyles(Footer);

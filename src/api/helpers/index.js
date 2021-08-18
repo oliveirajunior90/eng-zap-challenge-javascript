@@ -1,3 +1,5 @@
+const apiImages = 'https://oliveirajunior90.000webhostapp.com/olx';
+
 export const paginate = (array, limit, page) => {
   const data = array.slice((page - 1) * limit, page * limit);
   const pageTotal = Math.ceil(array.length / limit);
@@ -11,8 +13,12 @@ const pricingToNumber = (value) => {
   return parseFloat(value);
 };
 
-const formatGallery = (images) =>
-  images.map((res) => res.replace('http', 'https'));
+const formatGallery = (gallery) => {
+  return gallery.map((res) => {
+    const [, name] = res.split('images');
+    return apiImages + name;
+  });
+};
 
 export const formatData = (res) => {
   const rentalTotalPrice = pricingToNumber(res.pricingInfos.rentalTotalPrice);
