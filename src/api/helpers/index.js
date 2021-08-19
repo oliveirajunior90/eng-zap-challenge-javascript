@@ -19,7 +19,7 @@ const calculateRentalPrice = (rentalTotalPrice, brand) => {
 };
 
 const calculateNetPrice = (price, brand) =>
-  brand === 'zap' ? (10 / 100) * price + price : price;
+  brand === 'zap' ? price - (10 / 100) * price : price;
 
 const formatType = {
   RENTAL: 'aluguel',

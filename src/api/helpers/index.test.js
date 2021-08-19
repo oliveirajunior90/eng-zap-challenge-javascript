@@ -46,7 +46,7 @@ describe('Helpers', () => {
       location: { lon: -46.723175, lat: -23.501005 },
       neighborhood: 'Jardim Íris',
       price: 1200,
-      netPrice: 1320,
+      netPrice: 1080,
       monthlyCondoFee: 260,
       rentalTotalPrice: 1460,
       netRentalPrice: 1460,
@@ -131,6 +131,6 @@ describe('Helpers', () => {
       },
     };
     const data = formatData('zap')(mock);
-    expect(data).toMatchObject({ netPrice: 1320 });
+    expect(data).toMatchObject({ netPrice: 1080 });
   });
 });
