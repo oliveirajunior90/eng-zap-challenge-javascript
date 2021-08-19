@@ -6,7 +6,7 @@ import Jumbotron from 'components/jumpbotrom';
 import { Container, Grid } from '@material-ui/core';
 import Pagination from '@material-ui/lab/Pagination';
 import { Link } from 'react-router-dom';
-import withLoading from 'components/with-loading';
+import withLoading from 'components/loading';
 import LinearProgress from '@material-ui/core/LinearProgress';
 
 const ProductCardList = ({ products, brand }) => {

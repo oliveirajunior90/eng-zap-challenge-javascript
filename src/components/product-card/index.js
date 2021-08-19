@@ -30,10 +30,10 @@ const Details = ({ data, classes }) => (
     <h3 className={classes.neighborhood}>{data.neighborhood}</h3>
     <span className={classes.city}>{data.city}</span>
     {data.type === 'venda' ? (
-      <span className={classes.price}>{formatCurrency(data.price)}</span>
+      <span className={classes.price}>{formatCurrency(data.netPrice)}</span>
     ) : (
       <span className={classes.price}>
-        {formatCurrency(data.rentalTotalPrice)}
+        {formatCurrency(data.netRentalPrice)}
       </span>
     )}
   </div>

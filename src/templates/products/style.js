@@ -23,7 +23,7 @@ const styles = (theme) => ({
     margin: '220px auto',
     padding: '0 30px',
     [theme.breakpoints.down('sm')]: {
-      margin: '100px auto',
+      margin: '100px auto 300px',
     },
   },
 });

@@ -60,9 +60,9 @@ const Single = ({
   gallery,
   neighborhood,
   type,
-  price,
+  netPrice,
   city,
-  rentalTotalPrice,
+  netRentalPrice,
   bedrooms,
   bathrooms,
   handleBack,
@@ -101,7 +101,9 @@ const Single = ({
             <span className={classes.city}>localizado na cidade de {city}</span>
           )}
           <span className={classes.price}>
-            {formatCurrency(price) || formatCurrency(rentalTotalPrice)}
+            {type === 'venda'
+              ? formatCurrency(netPrice)
+              : formatCurrency(netRentalPrice)}
           </span>
           <div className={classes.acommodations}>
             {renderAcomodations(acomodations, classes)}

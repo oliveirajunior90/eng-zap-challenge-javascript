@@ -8,7 +8,7 @@ const withLoading = (Component) => (props) => {
 
     const timeout = setTimeout(() => {
       setCounter(counter + 1);
-    }, 50);
+    }, 10);
 
     return () => {
       clearTimeout(timeout);

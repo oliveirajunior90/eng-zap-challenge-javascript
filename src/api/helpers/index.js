@@ -13,6 +13,19 @@ const pricingToNumber = (value) => {
   return parseFloat(value);
 };
 
+const calculateRentalPrice = (rentalTotalPrice, brand) => {
+  const calculate = rentalTotalPrice + rentalTotalPrice / 2;
+  return brand === 'viva' ? calculate : rentalTotalPrice;
+};
+
+const calculateNetPrice = (price, brand) =>
+  brand === 'zap' ? (10 / 100) * price + price : price;
+
+const formatType = {
+  RENTAL: 'aluguel',
+  SALE: 'venda',
+};
+
 const formatGallery = (gallery) => {
   return gallery.map((res) => {
     const [, name] = res.split('images');
@@ -20,7 +33,7 @@ const formatGallery = (gallery) => {
   });
 };
 
-export const formatData = (res) => {
+export const formatData = (brand) => (res) => {
   const rentalTotalPrice = pricingToNumber(res.pricingInfos.rentalTotalPrice);
   const monthlyCondoFee = pricingToNumber(res.pricingInfos.monthlyCondoFee);
   const price = pricingToNumber(res.pricingInfos.price);
@@ -32,9 +45,11 @@ export const formatData = (res) => {
     location,
     neighborhood: res.address.neighborhood,
     price,
+    netPrice: calculateNetPrice(price, brand),
     monthlyCondoFee,
     rentalTotalPrice,
-    type: rentalTotalPrice ? 'aluguel' : 'venda',
+    netRentalPrice: calculateRentalPrice(rentalTotalPrice, brand),
+    type: formatType[res.pricingInfos.businessType],
     gallery: formatGallery(res.images),
     bathrooms: res.bathrooms,
     bedrooms: res.bedrooms,
